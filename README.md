@@ -2,17 +2,34 @@
 
 Yet another markdown toc generator.
 
+## Table of Contents
 <!-- toc-start -->
+&DoubleRightArrow; [mdtoc](#mdtoc)  
+&nbsp;&nbsp;&DoubleRightArrow; [Table of Contents](#table-of-contents)  
+&nbsp;&nbsp;&DoubleRightArrow; [Introduction](#introduction)  
+&nbsp;&nbsp;&DoubleRightArrow; [Why Another?](#why-another)  
+&nbsp;&nbsp;&DoubleRightArrow; [License](#license)  
+<!-- TOC created by './mdtoc.pl README.md' (see https://github.com/fordsfords/mdtoc) -->
 <!-- toc-end -->
 
 ## Introduction
 
-## Really? Seriously?
+GitHub flavored markdown has no automated table-of-contents generator.
 
-I used https://github.com/ekalinin/github-markdown-toc for
-a little while, but didn't like the dependency on curl and
-didn't love the code either.
+## Why Another?
+
+Really? Seriously?
+There are lots of markdown TOC tools out there.
+Why did we need another one?
+
+I used https://luciopaiva.com/markdown-toc/ but didn't
+like the cut-and-paste.
+
+I tried https://github.com/ekalinin/github-markdown-toc
+but didn't like the dependency on curl and didn't love
+the code either.
 I'm sure there's another one out there that I would like,
+although I have spent a little while looking,
 but what the heck -- I like to code.
 
 ## License

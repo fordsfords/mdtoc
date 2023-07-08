@@ -46,7 +46,6 @@ while (<>) {
     assrt($num_ids == scalar(@toc_hrefs), "$num_ids == " . scalar(@toc_hrefs));
 
     for (my $i = 0; $i < $num_ids; $i++) {
-print "??? toc_ids[$i]=$toc_ids[$i], toc_hrefs[$i]=$toc_hrefs[$i]\n";
       assrt($toc_ids[$i] eq $toc_hrefs[$i], "$toc_ids[$i] eq $toc_hrefs[$i]");
     }
     my $f = $ARGV;  # filename

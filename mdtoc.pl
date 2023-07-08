@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 # mdtoc.pl
 #
-# This code and its documentation is Copyright 2011-2021 Steven Ford
+# This code and its documentation is Copyright 2023-2023 Steven Ford
 # and licensed "public domain" style under Creative Commons "CC0":
 #   http://creativecommons.org/publicdomain/zero/1.0/
 # To the extent possible under law, the contributors to this project have
@@ -31,6 +31,8 @@ if (defined($opt_h)) {
   help();
 }
 
+my $cmd_line = join(" ", $0, @ARGV);
+
 my @pre_lines;
 my @post_lines;
 my @toc_lines;
@@ -46,7 +48,9 @@ while (<>) {
     }
   }
   elsif ($state eq "mid") {
+    # Ignore existing TOC lines till get to end.
     if (/<!-- toc-end -->/) {
+      push(@post_lines, "<!-- TOC created by '$cmd_line' (see https://github.com/fordsfords/mdtoc) -->\n");
       push(@post_lines, $_);
       $state = "post";
     }
@@ -59,24 +63,29 @@ while (<>) {
 
 } continue {  # This continue clause makes "$." give line number within file.
   if (eof) {
-    my $f = $ARGV;  # filename
+    my $filename = $ARGV;  # filename
     close ARGV;
+
     my $fh;
-    if ($f eq "-") {
+    # File name '-' means STDIN to STDOUT.
+    if ($filename eq "-") {
       $fh = *STDOUT
     } else {
       if (length($backup_suffix) > 0) {
-        copy($f, "$f$backup_suffix") or mycroak("failed copy '$f' '$f$backup_suffix'");
+        copy($filename, "$filename$backup_suffix") or mycroak("failed copy '$filename' '$filename$backup_suffix'");
       }
-      open($fh, ">", $f) or mycroak("open for write: '$f'");
+      open($fh, ">", $filename) or mycroak("open for write: '$filename'");
     }
+
     print $fh @pre_lines;
     print $fh @toc_lines;
     print $fh @post_lines;
-    if ($f ne "-") {
-      close($fh) or mycroak("close: '$f'");
+
+    if ($filename ne "-") {
+      close($fh) or mycroak("close: '$filename'");
     }
 
+    # Prepare for the next file (if any).
     $state = "pre";
     @pre_lines = ();
     @post_lines = ();
@@ -109,8 +118,9 @@ sub get_toc_line {
     my ($hashes, $title) = ($1, $2);
 
     $hashes =~ s/^.//;    # get rid of one hash
-    $hashes =~ s/#/  /g;  # convert rest of hashes to spaces for indention.
-    push (@toc_lines, "$hashes- [$title](#" . mk_id($title) . ")\n");
+    $hashes =~ s/#/&nbsp;&nbsp;/g;  # convert rest of hashes to indention.
+    # The two trailing spaces force a linebreak. Gotta love md.
+    push (@toc_lines, "$hashes&DoubleRightArrow; [$title](#" . mk_id($title) . ")  \n");
   }
 }  # get_toc_line
 

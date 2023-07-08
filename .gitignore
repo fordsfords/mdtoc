@@ -6,6 +6,7 @@ x.*
 *.tmp[0-9]
 ~*
 .DS_Store
+*.bak
 
 # Prerequisites
 *.d
