@@ -37,11 +37,22 @@ my @pre_lines;
 my @post_lines;
 my @toc_lines;
 my $state = "pre";
+my $in_code = 0;
 
 # Main loop; read each line in each file.
 while (<>) {
+  if ($in_code && /^````/) {
+    $in_code = 0;
+  }
+  elsif ((! $in_code) && /^````/) {
+    $in_code = 1;
+  }
+
   if ($state eq "pre") {
-    get_toc_line($_);
+    # Only process toc if outside code block.
+    if (! $in_code) {
+      get_toc_line($_);
+    }
     push(@pre_lines, $_);
     if (/<!-- mdtoc-start -->/) {
       $state = "mid";
@@ -56,13 +67,16 @@ while (<>) {
     }
   }
   elsif ($state eq "post") {
-    get_toc_line($_);
+    # Only process toc if outside code block.
+    if (! $in_code) {
+      get_toc_line($_);
+    }
     push(@post_lines, $_);
   }
   else { mycroak("Invalid state '$state'"); }
 
-} continue {  # This continue clause makes "$." give line number within file.
-  if (eof) {
+} continue {
+  if (eof) {  # This continue clause makes "$." give line number within file.
     my $filename = $ARGV;  # filename
     close ARGV;
 
@@ -93,6 +107,7 @@ while (<>) {
     @pre_lines = ();
     @post_lines = ();
     @toc_lines = ();
+    $in_code = 0;
   }
 }
 
@@ -108,7 +123,7 @@ sub mk_id {
 
   my $id = lc($hdr_text);
   $id =~ s/ /-/g;
-  $id =~ s/[^a-z-]//g;
+  $id =~ s/[^a-z0-9-]//g;
 
   return $id;
 }  # mk_id
@@ -117,7 +132,7 @@ sub mk_id {
 sub get_toc_line {
   my ($iline) = @_;
 
-  if ($iline =~ /^(##*)\s\s*(\S.*)$/) {
+  if ($iline =~ /^(#+)\s*([^\s#].*)$/) {
     my ($hashes, $title) = ($1, $2);
 
     $hashes =~ s/^.//;    # get rid of one hash

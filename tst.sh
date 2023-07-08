@@ -67,6 +67,18 @@ diff tst1.md x.md >x.out; ASSRT "$? -eq 0"
 curl -s --user-agent "mdtoc.pl v1.0" --data-binary @x.x -H "Content-Type:text/plain" https://api.github.com/markdown/raw >x.html
 ./tst.pl x.html; ASSRT "$? -eq 0"
 
+
+#################################
+# Test case: README.md
+
+rm -f x.*
+cp README.md x.md
+
+./mdtoc.pl -b "" x.md; ASSRT "$? -eq 0"
+
+curl -s --user-agent "mdtoc.pl v1.0" --data-binary @x.md -H "Content-Type:text/plain" https://api.github.com/markdown/raw >x.html
+./tst.pl x.html; ASSRT "$? -eq 0"
+
 #################################
 #################################
 #################################

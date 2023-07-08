@@ -3,14 +3,14 @@
 Yet another markdown toc generator.
 
 ## Table of Contents
-<!-- toc-start -->
+<!-- mdtoc-start -->
 &DoubleRightArrow; [mdtoc](#mdtoc)  
 &nbsp;&nbsp;&DoubleRightArrow; [Table of Contents](#table-of-contents)  
 &nbsp;&nbsp;&DoubleRightArrow; [Introduction](#introduction)  
 &nbsp;&nbsp;&DoubleRightArrow; [Why Another?](#why-another)  
 &nbsp;&nbsp;&DoubleRightArrow; [License](#license)  
 <!-- TOC created by './mdtoc.pl README.md' (see https://github.com/fordsfords/mdtoc) -->
-<!-- toc-end -->
+<!-- mdtoc-end -->
 
 ## Introduction
 
@@ -60,19 +60,85 @@ First, insert the following in your .md file:
 ````
 This shows the tool where to insert the TOC.
 
-Then run the tool:
+#### Example 1
+
 ````
 ./mdtoc.pl README.md
 ````
 
-This directly modifies README.md, adding the TOC. It also 
-creates
+This directly modifies "README.md", adding the TOC. It also 
+creates a backup file, "README.md.bak", which saves the contents
+of "README.md" before the tool modifies it.
+
+#### Example 2
+
+````
+./mdtoc.pl <README.md >README.new
+````
+
+This does not modify "README.md",
+and does not create a backup file.
+It reads the "README.md" file and writes the modified version
+to "README.new".
+
+#### Example 3
+
+````
+./mdtoc.pl -b "~" *.md
+````
+
+This finds all the ".md" files in the current directory and
+modifies them, naming the backup files with the "~" suffix.
+E.g. "README.md~"
+
+#### Example 4
+
+````
+find . -name '*.md' -print0 | xargs -0 ./mdtoc.pl -b ""
+````
+
+This finds all ".md" files in the current directory and
+all sub-directories recursively.
+Setting the backup suffix to the empty string causes no backup
+file to be created.
+
+Note the use of "print0" and "-0"; this handles file names that
+contain spaces (something we Unix old-timers tend to forget about).
 
 ## Design Notes
 
-The tool will react to only the first instance of `<!-- mdtoc-start -->`
+* This tool uses the Perl "diamond" operator.
+See https://blog.geeky-boy.com/2020/07/perl-diamond-operator.html#Security_Warning
+for a security warning about it.
+
+* If this tool is processing multiple files and one of them has
+an error, the tool stops processing immediately.
+The current file (with the error) is not modified and
+no subsequent files are processed.
+
+* The tool will react to only the first instance of `<!-- mdtoc-start -->`
 it encounters in the file; any subsequent instances will be simply passed
 as content.
+
+* I didn't use lists, like most similar tools use. Why not?
+
+  There can be syntactically-valid .md files that don't follow the
+normal (intuitive) sequence of header levels.  For example:
+  ````
+  ### First header
+  blah
+  ## Second header
+  blah
+  #### Third header
+  blah
+  ````
+
+  Trying to use normal markdown list syntax just doesn't work well.
+Go ahead - try it with other markdown TOC tools.
+
+* The "tst.sh" script is a self-test that includes running several .md
+files through GitHub's rendering API and makes sure the TOC links are
+the same as the HTML href tags.
 
 ## Why Another?
 
