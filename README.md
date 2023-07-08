@@ -88,7 +88,7 @@ to "README.new".
 ````
 
 This finds all the ".md" files in the current directory and
-modifies them, naming the backup files with the "~" suffix.
+modifies them, naming the backup files with the `"~"` suffix.
 E.g. "README.md~"
 
 #### Example 4
