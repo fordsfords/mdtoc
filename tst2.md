@@ -2,8 +2,8 @@
 
 blah
 
-<!-- toc-start -->
-<!-- toc-end -->
+<!-- mdtoc-start -->
+<!-- mdtoc-end -->
 
 ## Introduction
 

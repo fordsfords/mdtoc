@@ -43,13 +43,13 @@ while (<>) {
   if ($state eq "pre") {
     get_toc_line($_);
     push(@pre_lines, $_);
-    if (/<!-- toc-start -->/) {
+    if (/<!-- mdtoc-start -->/) {
       $state = "mid";
     }
   }
   elsif ($state eq "mid") {
     # Ignore existing TOC lines till get to end.
-    if (/<!-- toc-end -->/) {
+    if (/<!-- mdtoc-end -->/) {
       push(@post_lines, "<!-- TOC created by '$cmd_line' (see https://github.com/fordsfords/mdtoc) -->\n");
       push(@post_lines, $_);
       $state = "post";
@@ -65,6 +65,9 @@ while (<>) {
   if (eof) {
     my $filename = $ARGV;  # filename
     close ARGV;
+
+    if ($state eq "pre") { mycroak("Could not find '<!-- mdtoc-start -->' in $filename"); }
+    if ($state eq "mid") { mycroak("Could not find '<!-- mdtoc-end -->' in $filename"); }
 
     my $fh;
     # File name '-' means STDIN to STDOUT.

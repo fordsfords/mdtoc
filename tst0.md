@@ -2,9 +2,6 @@
 
 blah
 
-<!-- mdtoc-start -->
-<!-- mdtoc-end -->
-
 ## Introduction
 
 blah

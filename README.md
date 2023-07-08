@@ -14,7 +14,65 @@ Yet another markdown toc generator.
 
 ## Introduction
 
-GitHub flavored markdown has no automated table-of-contents generator.
+I, like very many other people, like my documents to have a table of contents.
+For web-based documents, clickable links make navigation easier and faster.
+But GitHub flavored markdown has no automated table-of-contents generator.
+This tool fills that gap.
+
+### Dependencies
+
+* Perl
+
+### Disclaimer
+
+I'm not a markdown expert.
+I did enough experimenting with how various header texts are converted to
+HTML references that I think I know the algorithem.
+But there may be corner cases that I don't know.
+This would result in the links not working right.
+
+Let me know if you have a broken test case.
+
+## Usage
+
+Here's the tool's built-in help (obtained by running it with
+the '-h' option):
+````
+Usage: mdtoc [-h] [-b backup_suffix] [file ...]
+    -h - help
+    -b backup_suffix - File name suffix for backup file.
+       Use '-b ""' for no backup. Defaults to '-b ".bak"'.
+    file ... - one or more input files.  If omitted, inputs from stdin.
+````
+
+### Examples
+
+I typically do my markdown documentation work using a simple text editor
+at a Unix (or Unix-like) shell prompt.
+I'm pretty confident that this tool will also work on Windows at a command
+prompt.
+But I'll show my usage.
+
+First, insert the following in your .md file:
+````
+<!-- mdtoc-start -->
+<!-- mdtoc-end -->
+````
+This shows the tool where to insert the TOC.
+
+Then run the tool:
+````
+./mdtoc.pl README.md
+````
+
+This directly modifies README.md, adding the TOC. It also 
+creates
+
+## Design Notes
+
+The tool will react to only the first instance of `<!-- mdtoc-start -->`
+it encounters in the file; any subsequent instances will be simply passed
+as content.
 
 ## Why Another?
 
@@ -29,7 +87,6 @@ I tried https://github.com/ekalinin/github-markdown-toc
 but didn't like the dependency on curl and didn't love
 the code either.
 I'm sure there's another one out there that I would like,
-although I have spent a little while looking,
 but what the heck -- I like to code.
 
 ## License
