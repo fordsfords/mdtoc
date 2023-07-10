@@ -83,4 +83,10 @@ curl -s --user-agent "mdtoc.pl v1.0" --data-binary @x.md -H "Content-Type:text/p
 #################################
 #################################
 
+# Now do the official doc's TOC.
+./mdtoc.pl -b "" README.md; ASSRT "$? -eq 0"
+
+# Cleanup
+rm -f x.*
+
 echo "Success: $test_num tests passed."
