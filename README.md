@@ -54,6 +54,20 @@ Usage: mdtoc [-h] [-b backup_suffix] [file ...]
     file ... - one or more input files.  If omitted, inputs from stdin.
 ````
 
+Many of my repos have a build script or maybe a test script in which I include the following:
+````
+# Update doc table of contents (see https://github.com/fordsfords/mdtoc).
+if which mdtoc.pl >/dev/null; then mdtoc.pl -b "" README.md;
+elif [ -x ../mdtoc/mdtoc.pl ]; then ../mdtoc/mdtoc.pl -b "" README.md;
+else echo "FYI: mdtoc.pl not found; see https://github.com/fordsfords/mdtoc"
+fi
+````
+
+This first checks to see if mdtoc.pl is in the PATH and runs it.
+If not, it checks to see if mdtoc repo exists in the parent directory,
+and runs it.
+
+
 ### Examples
 
 I typically do my markdown documentation work using a simple text editor
