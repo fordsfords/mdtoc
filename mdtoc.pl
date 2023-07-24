@@ -123,7 +123,7 @@ sub mk_id {
 
   my $id = lc($hdr_text);
   $id =~ s/ /-/g;
-  $id =~ s/[^a-z0-9-]//g;
+  $id =~ s/[^a-z0-9_-]//g;
 
   return $id;
 }  # mk_id

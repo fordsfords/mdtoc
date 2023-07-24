@@ -17,6 +17,6 @@ blah
 
 blah
 
-### D  vs. D++
+### D  v_s. D++
 
 #### E  vs. E++
