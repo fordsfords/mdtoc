@@ -135,8 +135,10 @@ sub get_toc_line {
   if ($iline =~ /^(#+)\s*([^\s#].*)$/) {
     my ($hashes, $title) = ($1, $2);
 
+    while ($title =~ s/\[([^]]+)\]\([^)]+\)/$1/) { }
+
     $hashes =~ s/^.//;    # get rid of one hash
-    $hashes =~ s/#/&nbsp;&nbsp;/g;  # convert rest of hashes to indention.
+    $hashes =~ s/#/&DoubleRightArrow;&nbsp;/g;  # convert rest of hashes to indention.
     # The two trailing spaces force a linebreak. Gotta love md.
     push (@toc_lines, "$hashes&DoubleRightArrow; [$title](#" . mk_id($title) . ")  \n");
   }
