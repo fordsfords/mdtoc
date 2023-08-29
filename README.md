@@ -5,20 +5,20 @@ Yet another markdown toc generator.
 ## Table of Contents
 <!-- mdtoc-start -->
 &DoubleRightArrow; [mdtoc](#mdtoc)  
-&nbsp;&nbsp;&DoubleRightArrow; [Table of Contents](#table-of-contents)  
-&nbsp;&nbsp;&DoubleRightArrow; [Introduction](#introduction)  
-&nbsp;&nbsp;&nbsp;&nbsp;&DoubleRightArrow; [Dependencies](#dependencies)  
-&nbsp;&nbsp;&nbsp;&nbsp;&DoubleRightArrow; [Disclaimer](#disclaimer)  
-&nbsp;&nbsp;&DoubleRightArrow; [Usage](#usage)  
-&nbsp;&nbsp;&nbsp;&nbsp;&DoubleRightArrow; [Examples](#examples)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&DoubleRightArrow; [Example 1](#example-1)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&DoubleRightArrow; [Example 2](#example-2)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&DoubleRightArrow; [Example 3](#example-3)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&DoubleRightArrow; [Example 4](#example-4)  
-&nbsp;&nbsp;&DoubleRightArrow; [Design Notes](#design-notes)  
-&nbsp;&nbsp;&DoubleRightArrow; [Why Another?](#why-another)  
-&nbsp;&nbsp;&DoubleRightArrow; [License](#license)  
-<!-- TOC created by './mdtoc.pl README.md' (see https://github.com/fordsfords/mdtoc) -->
+&DoubleRightArrow;&nbsp;&DoubleRightArrow; [Table of Contents](#table-of-contents)  
+&DoubleRightArrow;&nbsp;&DoubleRightArrow; [Introduction](#introduction)  
+&DoubleRightArrow;&nbsp;&DoubleRightArrow;&nbsp;&DoubleRightArrow; [Dependencies](#dependencies)  
+&DoubleRightArrow;&nbsp;&DoubleRightArrow;&nbsp;&DoubleRightArrow; [Disclaimer](#disclaimer)  
+&DoubleRightArrow;&nbsp;&DoubleRightArrow; [Usage](#usage)  
+&DoubleRightArrow;&nbsp;&DoubleRightArrow;&nbsp;&DoubleRightArrow; [Examples](#examples)  
+&DoubleRightArrow;&nbsp;&DoubleRightArrow;&nbsp;&DoubleRightArrow;&nbsp;&DoubleRightArrow; [Example 1](#example-1)  
+&DoubleRightArrow;&nbsp;&DoubleRightArrow;&nbsp;&DoubleRightArrow;&nbsp;&DoubleRightArrow; [Example 2](#example-2)  
+&DoubleRightArrow;&nbsp;&DoubleRightArrow;&nbsp;&DoubleRightArrow;&nbsp;&DoubleRightArrow; [Example 3](#example-3)  
+&DoubleRightArrow;&nbsp;&DoubleRightArrow;&nbsp;&DoubleRightArrow;&nbsp;&DoubleRightArrow; [Example 4](#example-4)  
+&DoubleRightArrow;&nbsp;&DoubleRightArrow; [Design Notes](#design-notes)  
+&DoubleRightArrow;&nbsp;&DoubleRightArrow; [Why Another?](#why-another)  
+&DoubleRightArrow;&nbsp;&DoubleRightArrow; [License](#license)  
+<!-- TOC created by '../mdtoc/mdtoc.pl README.md' (see https://github.com/fordsfords/mdtoc) -->
 <!-- mdtoc-end -->
 
 ## Introduction
