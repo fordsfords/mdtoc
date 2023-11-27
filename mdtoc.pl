@@ -38,6 +38,7 @@ my @post_lines;
 my @toc_lines;
 my $state = "pre";
 my $in_code = 0;
+my %targets;
 
 # Main loop; read each line in each file.
 while (<>) {
@@ -140,6 +141,15 @@ sub get_toc_line {
     $hashes =~ s/^.//;    # get rid of one hash
     $hashes =~ s/#/&nbsp;&nbsp;&nbsp;&nbsp;/g;  # convert rest of hashes to four spaces.
     # The two trailing spaces force a linebreak. Gotta love md.
+    my $title_id = mk_id($title);
+    if (defined($targets{$title_id})) {
+      if ($targets{$title_id} == 1) {
+        print STDERR "Warning, title_id '$title_id' appears multiple times\n";
+      }
+      $targets{$title_id}++;
+    } else {  # First time title_id appears.
+      $targets{$title_id} = 1;
+    }
     push (@toc_lines, "$hashes&bull; [$title](#" . mk_id($title) . ")  \n");
   }
 }  # get_toc_line
