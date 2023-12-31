@@ -5,19 +5,19 @@ Yet another markdown toc generator.
 ## Table of Contents
 <!-- mdtoc-start -->
 &bull; [mdtoc](#mdtoc)  
-&middot;&nbsp;&bull; [Table of Contents](#table-of-contents)  
-&middot;&nbsp;&bull; [Introduction](#introduction)  
-&middot;&nbsp;&middot;&nbsp;&bull; [Dependencies](#dependencies)  
-&middot;&nbsp;&middot;&nbsp;&bull; [Disclaimer](#disclaimer)  
-&middot;&nbsp;&bull; [Usage](#usage)  
-&middot;&nbsp;&middot;&nbsp;&bull; [Examples](#examples)  
-&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&bull; [Example 1](#example-1)  
-&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&bull; [Example 2](#example-2)  
-&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&bull; [Example 3](#example-3)  
-&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;&bull; [Example 4](#example-4)  
-&middot;&nbsp;&bull; [Design Notes](#design-notes)  
-&middot;&nbsp;&bull; [Why Another?](#why-another)  
-&middot;&nbsp;&bull; [License](#license)  
+&nbsp;&nbsp;&nbsp;&nbsp;&bull; [Table of Contents](#table-of-contents)  
+&nbsp;&nbsp;&nbsp;&nbsp;&bull; [Introduction](#introduction)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; [Dependencies](#dependencies)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; [Disclaimer](#disclaimer)  
+&nbsp;&nbsp;&nbsp;&nbsp;&bull; [Usage](#usage)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; [Examples](#examples)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; [Example 1](#example-1)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; [Example 2](#example-2)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; [Example 3](#example-3)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; [Example 4](#example-4)  
+&nbsp;&nbsp;&nbsp;&nbsp;&bull; [Design Notes](#design-notes)  
+&nbsp;&nbsp;&nbsp;&nbsp;&bull; [Why Another?](#why-another)  
+&nbsp;&nbsp;&nbsp;&nbsp;&bull; [License](#license)  
 <!-- TOC created by './mdtoc.pl README.md' (see https://github.com/fordsfords/mdtoc) -->
 <!-- mdtoc-end -->
 
