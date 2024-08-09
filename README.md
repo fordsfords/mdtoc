@@ -18,7 +18,7 @@ Yet another markdown toc generator.
 &nbsp;&nbsp;&nbsp;&nbsp;&bull; [Design Notes](#design-notes)  
 &nbsp;&nbsp;&nbsp;&nbsp;&bull; [Why Another?](#why-another)  
 &nbsp;&nbsp;&nbsp;&nbsp;&bull; [License](#license)  
-<!-- TOC created by '/home/sford/bin/mdtoc.pl README.md' (see https://github.com/fordsfords/mdtoc) -->
+<!-- TOC created by './mdtoc.pl README.md' (see https://github.com/fordsfords/mdtoc) -->
 <!-- mdtoc-end -->
 
 ## Introduction
