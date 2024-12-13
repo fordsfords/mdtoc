@@ -12,6 +12,9 @@ ASSRT() {
   echo "Test $test_num: passed"
 }  # ASSRT
 
+
+./bld.sh; ASSRT "$? -eq 0"
+
 test_num=0
 
 #################################
