@@ -15,7 +15,7 @@ use warnings;
 use Getopt::Std;
 use File::Basename;
 use Carp;
-use File::Copy 'copy';
+use File::Compare;
 
 # globals
 my $tool = basename($0);
@@ -85,14 +85,14 @@ while (<>) {
     if ($state eq "mid") { mycroak("Could not find '<!-- mdtoc-end -->' in $filename"); }
 
     my $fh;
+    my $new_filename;
+    
     # File name '-' means STDIN to STDOUT.
     if ($filename eq "-") {
-      $fh = *STDOUT
+      $fh = *STDOUT;
     } else {
-      if (length($backup_suffix) > 0) {
-        copy($filename, "$filename$backup_suffix") or mycroak("failed copy '$filename' '$filename$backup_suffix'");
-      }
-      open($fh, ">", $filename) or mycroak("open for write: '$filename'");
+      $new_filename = "$filename.new";
+      open($fh, ">", $new_filename) or mycroak("open for write: '$new_filename'");
     }
 
     print $fh @pre_lines;
@@ -100,7 +100,23 @@ while (<>) {
     print $fh @post_lines;
 
     if ($filename ne "-") {
-      close($fh) or mycroak("close: '$filename'");
+      close($fh) or mycroak("close: '$new_filename'");
+      
+      # Compare the new file with the original
+      if (compare($new_filename, $filename) == 0) {
+        # Files are identical, just remove the new file
+        unlink($new_filename) or mycroak("failed to unlink '$new_filename'");
+      } else {
+        # Files are different, do the rename dance
+        if (length($backup_suffix) > 0) {
+          # Want a backup: rename original to backup, then new to original
+          rename($filename, "$filename$backup_suffix") or mycroak("failed rename '$filename' to '$filename$backup_suffix'");
+          rename($new_filename, $filename) or mycroak("failed rename '$new_filename' to '$filename'");
+        } else {
+          # No backup: just rename new to original
+          rename($new_filename, $filename) or mycroak("failed rename '$new_filename' to '$filename'");
+        }
+      }
     }
 
     # Prepare for the next file (if any).
